@@ -12,6 +12,8 @@
 		260DD27426A8F4C600D070CA /* MacOSCatnetClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 260DD27226A8F4C600D070CA /* MacOSCatnetClient.xcdatamodeld */; };
 		260DD27626A8F4C600D070CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 260DD27526A8F4C600D070CA /* Assets.xcassets */; };
 		260DD27926A8F4C600D070CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260DD27726A8F4C600D070CA /* Main.storyboard */; };
+		260DD28226A8F89D00D070CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DD28126A8F89D00D070CA /* MainViewController.swift */; };
+		260DD28726A907C600D070CA /* libcatnet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 260DD28626A907C600D070CA /* libcatnet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,9 @@
 		260DD27826A8F4C600D070CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		260DD27A26A8F4C600D070CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		260DD27B26A8F4C600D070CA /* MacOSCatnetClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacOSCatnetClient.entitlements; sourceTree = "<group>"; };
+		260DD28126A8F89D00D070CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		260DD28426A8FBC100D070CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		260DD28626A907C600D070CA /* libcatnet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcatnet.a; path = ../../build/src/libcatnet.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260DD28726A907C600D070CA /* libcatnet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +47,7 @@
 			children = (
 				260DD26D26A8F4C600D070CA /* MacOSCatnetClient */,
 				260DD26C26A8F4C600D070CA /* Products */,
+				260DD28526A907C600D070CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				260DD26E26A8F4C600D070CA /* AppDelegate.swift */,
+				260DD28126A8F89D00D070CA /* MainViewController.swift */,
 				260DD27026A8F4C600D070CA /* ViewController.swift */,
 				260DD27526A8F4C600D070CA /* Assets.xcassets */,
 				260DD27726A8F4C600D070CA /* Main.storyboard */,
@@ -64,6 +72,14 @@
 				260DD27226A8F4C600D070CA /* MacOSCatnetClient.xcdatamodeld */,
 			);
 			path = MacOSCatnetClient;
+			sourceTree = "<group>";
+		};
+		260DD28526A907C600D070CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				260DD28626A907C600D070CA /* libcatnet.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +154,7 @@
 				260DD27126A8F4C600D070CA /* ViewController.swift in Sources */,
 				260DD26F26A8F4C600D070CA /* AppDelegate.swift in Sources */,
 				260DD27426A8F4C600D070CA /* MacOSCatnetClient.xcdatamodeld in Sources */,
+				260DD28226A8F89D00D070CA /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +165,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				260DD27826A8F4C600D070CA /* Base */,
+				260DD28426A8FBC100D070CA /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

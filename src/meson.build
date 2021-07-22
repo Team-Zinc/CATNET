@@ -73,7 +73,7 @@ project_library_target = static_library(
   cpp_pch : 'pch/pch.hpp',
   dependencies : project_dependencies,
   include_directories : inc_dirs,
-  install : false,
+  install : true,
   cpp_args : build_args,
 )
 
