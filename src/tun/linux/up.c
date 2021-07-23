@@ -2,7 +2,7 @@
 #include "type.h"
 
 #include <sys/ioctl.h>
-#include <net/if.h>
+#include <linux/if.h>
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>

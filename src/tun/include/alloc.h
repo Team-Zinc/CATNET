@@ -3,14 +3,11 @@
 
 #define TUN_CLONE_DEVICE "/dev/net/tun"
 
-/// Basically a wrapper around a device and
-/// the kernel chosen name for a TUN device.
-typedef struct {
-    int device, sock;
-    struct ifreq* ifr;
-} AllocatedTun;
+#ifdef linux
+#include "../linux/type.h"
+#endif
 
-int tun_alloc(AllocatedTun* tun);
-void tun_dealloc(AllocatedTun* tun);
+int tun_alloc(void* tun);
+void tun_dealloc(void* tun);
 
 #endif /* ALLOC_H */

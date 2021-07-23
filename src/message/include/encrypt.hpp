@@ -22,7 +22,8 @@ class SessionEncryptionState
 	void set_other_public_key(unsigned char oth_pk[crypto_box_PUBLICKEYBYTES]);
 
 	/// Encrypts a message, and then return it.
-	int encrypt_message(std::vector<unsigned char> message, std::vector<unsigned char>* buf);
+	int encrypt_message(std::vector<unsigned char> message,
+						std::vector<unsigned char>* buf);
 
 	/// Getter function for our public key.
 	/// For example, if this is running on the participant,

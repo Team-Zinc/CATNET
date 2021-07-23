@@ -1,14 +1,8 @@
 #include "../include/alloc.h"
 #include "type.h"
 
-#include <net/if.h>
-#ifdef linux
+#include <linux/if.h>
 #include <linux/if_tun.h>
-#elif __APPLE__
-#include "if_tun.h"
-#else
-#error Unsupported platform!
-#endif
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>

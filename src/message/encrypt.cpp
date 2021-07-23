@@ -23,7 +23,8 @@ SessionEncryptionState::set_other_public_key(
 }
 
 int
-SessionEncryptionState::encrypt_message(std::vector<unsigned char> message, std::vector<unsigned char>* buf)
+SessionEncryptionState::encrypt_message(std::vector<unsigned char> message,
+										std::vector<unsigned char>* buf)
 {
 	// Generate our nonce. Even though this is random number,
 	// and there still *could* be collisions, it is such a small
@@ -45,8 +46,8 @@ SessionEncryptionState::encrypt_message(std::vector<unsigned char> message, std:
 						nonce,
 						m_our_pk,
 						m_our_sk) == -1) {
-	    return -1;
-    }
+		return -1;
+	}
 
 	mutate_cstr_to_vector(*ciphertext, *buf);
 	return 0;

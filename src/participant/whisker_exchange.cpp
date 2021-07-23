@@ -21,31 +21,31 @@ WhiskerExchange::run()
 	CND_DAEMON_INFO("Running whisker exchange....");
 
 	CND_DAEMON_INFO("Creating TUN device...");
-    auto dev = TunDevice();
-    if (dev.init() != 0) {
+	auto dev = TunDevice();
+	if (dev.init() != 0) {
 		return -1;
-    }
+	}
 
-    m_tun.emplace(dev);
+	m_tun.emplace(dev);
 
-    CND_DAEMON_INFO("Listening for packets....");
+	CND_DAEMON_INFO("Listening for packets....");
 	while (true) {
-	    CND_DAEMON_TRACE("frame:");
-        auto buf = m_tun->read_incomming_data();
+		CND_DAEMON_TRACE("frame:");
+		auto buf = m_tun->read_incomming_data();
 
-        if (buf == nullptr) {
-            // there mustve been an error reading from the
-            // tun interface. It's already logged, so we
-            // can just continue
-            continue;
-        }
+		if (buf == nullptr) {
+			// there mustve been an error reading from the
+			// tun interface. It's already logged, so we
+			// can just continue
+			continue;
+		}
 
-        for (auto _char : *buf) {
-            CND_DAEMON_TRACE(_char);
-        }
-    }
+		for (auto _char : *buf) {
+			CND_DAEMON_TRACE(_char);
+		}
+	}
 
-    return 0;
+	return 0;
 }
 
 void

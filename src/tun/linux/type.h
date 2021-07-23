@@ -1,5 +1,5 @@
-#ifndef TYPE_H
-#define TYPE_H
+#ifndef CND_TYPE_H
+#define CND_TYPE_H
 
 /// Basically a wrapper around a device and
 /// the kernel chosen name for a TUN device.
@@ -8,4 +8,4 @@ typedef struct {
     struct ifreq* ifr;
 } AllocatedTun;
 
-#endif /* TYPE_H */
+#endif /* CND_TYPE_H */

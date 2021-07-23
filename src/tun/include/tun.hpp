@@ -1,15 +1,16 @@
 #ifndef TUN_HPP
 #define TUN_HPP
 
-extern "C" {
+extern "C"
+{
 #include "alloc.h"
 }
 
-#include <vector>
+#include <errno.h>
 #include <exception>
 #include <fmt/core.h>
 #include <string>
-#include <errno.h>
+#include <vector>
 
 class TunDevice
 {
@@ -18,9 +19,10 @@ class TunDevice
 	void destroy();
 
 	bool is_ok();
-    std::vector<char>* read_incomming_data();
+	std::vector<char>* read_incomming_data();
+
   private:
-    AllocatedTun m_tun;
+	void* m_tun;
 };
 
 #endif /* TUNH_HPP */
