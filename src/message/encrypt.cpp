@@ -40,7 +40,7 @@ SessionEncryptionState::encrypt_message(std::vector<unsigned char> message,
 		throw std::system_error(errno, std::generic_category());
 	}
 
-	if (crypto_box_easy(ciphertext,
+	if (crypto_box_curve25519xchacha20poly1305_easy(ciphertext,
 						message.data(),
 						message.size(),
 						nonce,
