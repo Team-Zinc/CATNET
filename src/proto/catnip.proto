@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package catnip;
+
+message PacketFragment {
+    string packet_id = 1;
+    int32 fragment_id = 2;
+    bytes packet = 3;
+}
+

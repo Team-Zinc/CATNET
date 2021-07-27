@@ -1,4 +1,5 @@
-#include "include/alloc.h"
+#include "../include/alloc.h"
+#include "type.h"
 
 #include <linux/if.h>
 #include <linux/if_tun.h>
@@ -18,9 +19,9 @@
 /// I love linux documentation. Seriously. I do.
 /// TODO: Support multiqueue (paralell tun->
 int
-tun_alloc(AllocatedTun* tun)
+tun_alloc(void* v_tun)
 {
-#ifdef __linux__
+    AllocatedTun *tun = (AllocatedTun*) v_tun;
     static struct ifreq ifr;
     int fp, err;
     char dev[16] = "\0"; // Let the kernel pick a name
@@ -47,12 +48,11 @@ tun_alloc(AllocatedTun* tun)
     tun->device = fp;
 
     return 0;
-#else
-#error I know non-linux is techinically supported, but I do not have access to a MacOS testing machine right now. As such, the TUN wrapper doesn't work. Expect this to be fixed in less than a week.
-#endif
 }
 
-void tun_dealloc(AllocatedTun* tun) {
+void tun_dealloc(void* v_tun) {
+    AllocatedTun *tun = (AllocatedTun*) v_tun;
+
     close(tun->device);
     close(tun->sock);
 }

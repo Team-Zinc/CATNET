@@ -3,7 +3,7 @@
 # Define the project.
 project(
   'catnet', # Set project name
-  ['c', 'cpp'], # Set project language
+  ['c', 'cpp'], # Set project languages
   version : '0.0.1', # Set project version
   default_options : [
     # https://mesonbuild.com/Builtin-options.html

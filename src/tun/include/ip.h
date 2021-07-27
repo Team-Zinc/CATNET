@@ -8,6 +8,6 @@
 /// straight forward. What about IPv8 you ask? I'm pretty
 /// sure only 37 people use it, and we don't care about
 /// them.
-int assign_tun_ipv4(AllocatedTun* tun);
+int assign_tun_ipv4(void* tun);
 
 #endif /* IP_H */

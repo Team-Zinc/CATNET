@@ -1,4 +1,5 @@
 #include <up.h>
+#include "type.h"
 
 #include <sys/ioctl.h>
 #include <linux/if.h>
@@ -8,8 +9,9 @@
 
 #include <stdio.h>
 
-int bring_tun_up(AllocatedTun* tun) {
+int bring_tun_up(void* v_tun) {
     // struct ifreq ifr;
+    AllocatedTun *tun = (AllocatedTun*) v_tun;
     int err;
 
     // ifr.ifr_flags = tun->ifr->ifr_flags;

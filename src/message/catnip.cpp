@@ -1,10 +1,10 @@
-#include "include/message.hpp"
-#include "base.pb.h"
+#include "include/catnip.hpp"
+#include "catnip.pb.h"
 
 #include <log.hpp>
 
 bool
-serialize_message_to_vector(base::Message* message,
+serialize_message_to_vector(catnip::PacketFragment* message,
 							std::vector<unsigned char>* into)
 {
 	size_t byte_size = message->ByteSizeLong();
@@ -18,7 +18,7 @@ serialize_message_to_vector(base::Message* message,
 }
 
 bool
-deserialize_vector_to_message(base::Message& into,
+deserialize_vector_to_message(catnip::PacketFragment& into,
 							  std::vector<unsigned char>& from)
 {
 	return into.ParseFromArray(from.data(), from.size());
@@ -50,25 +50,3 @@ get_command_uid()
 	return current;
 }
 
-base::Message
-create_test_message()
-{
-	base::Message test_message;
-
-	test_message.mutable_test_connection(); // Set as the testing commandw
-	test_message.set_id(get_command_uid());
-
-	return test_message;
-}
-
-base::Message
-create_pk_exchange_message(unsigned char pk[crypto_box_PUBLICKEYBYTES])
-{
-	base::Message exchange_message;
-
-	auto sub = exchange_message.mutable_pubkey_exchange();
-	sub->set_pubkey(reinterpret_cast<char*>(pk));
-	exchange_message.set_id(get_command_uid());
-
-	return exchange_message;
-}

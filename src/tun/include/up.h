@@ -3,7 +3,7 @@
 
 #include "alloc.h"
 
-int bring_tun_up(AllocatedTun* tun);
+int bring_tun_up(void* tun);
 
 #endif /* UP_H */
 

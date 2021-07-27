@@ -1,6 +1,6 @@
 #include "include/encrypt.hpp"
 
-#include "include/message.hpp"
+#include "include/base.hpp"
 #include <cassert>
 #include <cerrno>
 #include <log.hpp>
@@ -23,7 +23,8 @@ SessionEncryptionState::set_other_public_key(
 }
 
 int
-SessionEncryptionState::encrypt_message(std::vector<unsigned char> message, std::vector<unsigned char>* buf)
+SessionEncryptionState::encrypt_message(std::vector<unsigned char> message,
+										std::vector<unsigned char>* buf)
 {
 	// Generate our nonce. Even though this is random number,
 	// and there still *could* be collisions, it is such a small
@@ -39,14 +40,14 @@ SessionEncryptionState::encrypt_message(std::vector<unsigned char> message, std:
 		throw std::system_error(errno, std::generic_category());
 	}
 
-	if (crypto_box_easy(ciphertext,
+	if (crypto_box_curve25519xchacha20poly1305_easy(ciphertext,
 						message.data(),
 						message.size(),
 						nonce,
 						m_our_pk,
 						m_our_sk) == -1) {
-	    return -1;
-    }
+		return -1;
+	}
 
 	mutate_cstr_to_vector(*ciphertext, *buf);
 	return 0;

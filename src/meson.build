@@ -11,12 +11,14 @@ subdir('proto')
 
 project_source_files = [
   base_gened, test_connection_gened, pubkey_exchange_gened,
+  catnip_gened,
   'participant/participant.cpp',
   'participant/update_catstate.cpp',
   'participant/whisker_exchange.cpp',
   'registrar/registrar.cpp',
   'logging/log.cpp',
-  'message/message.cpp',
+  'message/base.cpp',
+  'message/catnip.cpp',
   'message/encrypt.cpp',
   'sockets/socket_compat.cpp',
   'sockets/tcp_client_socket.cpp',
@@ -25,10 +27,7 @@ project_source_files = [
   'sockets/udp_client_socket.cpp',
   'sockets/udp_server_socket.cpp',
   'sockets/udp_socket.cpp',
-  'tun/alloc.c', # WOHOOOO! C!
-  'tun/tun.cpp',
-  'tun/up.c', # More C!
-  'tun/ip.c' # Still great C!
+  'tun/tun.cpp'
 ]
 
 logging_inc = include_directories('logging/include')
@@ -65,6 +64,18 @@ inc_dirs = [
   tun_inc
 ]
 
+if build_machine.system() == 'linux'
+  project_source_files += [
+    'tun/linux/alloc.c',
+    'tun/linux/up.c',
+    'tun/linux/ip.c',
+  ]
+elif build_machine.system() == 'darwin'
+  subdir('tun/darwin')
+
+  project_source_files += macos_swift_tun
+endif
+
 # We compile into a library first because we need to
 # link the test code with it first.
 project_library_target = static_library(
@@ -73,19 +84,9 @@ project_library_target = static_library(
   cpp_pch : 'pch/pch.hpp',
   dependencies : project_dependencies,
   include_directories : inc_dirs,
-  install : false,
-  cpp_args : build_args,
-)
-
-project_target = executable(
-  'catnetd',
-  'daemon.cpp',
-  cpp_pch : 'pch/pch.hpp',
-  dependencies : project_dependencies,
-  link_with : project_library_target,
-  include_directories : inc_dirs,
   install : true,
   cpp_args : build_args,
 )
 
+subdir('clients/cli')
 subdir('docs')

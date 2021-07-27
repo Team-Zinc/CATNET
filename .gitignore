@@ -1,3 +1,6 @@
+# Werid tmp files
+**/tmp*
+
 # Prerequisites
 *.d
 
@@ -31,6 +34,9 @@
 *.exe~
 *.out
 *.app
+
+# Rust build directories
+**/target/
 
 # Meson build directories
 build/

@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "../message/include/encrypt.hpp" // TODO: Use arrow notation, YouCompleteMe is screaming at me for now
-#include "../message/include/message.hpp" // TODO: Use arrow notation, YouCompleteMe is screaming at me for now
+#include "../message/include/base.hpp" // TODO: Use arrow notation, YouCompleteMe is screaming at me for now
 
 using namespace base;
 
@@ -33,8 +33,8 @@ RegistrarExchange::test_connection()
 	CND_DAEMON_DEBUG("Serializing test message....");
 	if (!serialize_message_to_vector(&message, &vec_message)) {
 		CND_DAEMON_CRITICAL(
-            "Failed to serialize base::Message to send over the "
-            "network.");
+		  "Failed to serialize base::Message to send over the "
+		  "network.");
 		return;
 	}
 
@@ -123,7 +123,7 @@ RegistrarExchange::update_catstate()
 	CND_DAEMON_INFO("Receiving group contact information....");
 	CND_DAEMON_WARN("Not implemented!");
 
-    return 0;
+	return 0;
 }
 
 void

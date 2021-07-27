@@ -1,4 +1,5 @@
-#include "include/ip.h"
+#include "../include/ip.h"
+#include "type.h"
 
 #include <linux/if.h>
 #include <sys/ioctl.h>
@@ -7,9 +8,10 @@
 #include <string.h>
 #include <unistd.h>
 
-int assign_tun_ipv4(AllocatedTun* tun) {
+int assign_tun_ipv4(void* v_tun) {
     int err;
-
+    AllocatedTun *tun = (AllocatedTun*) v_tun;
+    
     tun->ifr->ifr_addr.sa_family = AF_INET;
     // TODO: https://stackoverflow.com/questions/64608067/linux-socket-c-c-what-is-the-best-way-to-check-if-ip-port-is-already-in-use
     // Also, no `!= 1` is not a typo. inet_pton returns 1 on success, weirdly enough.
@@ -49,4 +51,3 @@ int assign_tun_ipv4(AllocatedTun* tun) {
 
     return 0;
 }
-

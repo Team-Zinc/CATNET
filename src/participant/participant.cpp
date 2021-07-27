@@ -20,13 +20,13 @@ Participant::run()
 
 	CND_DAEMON_DEBUG("Updating catstate....");
 	if (RegistrarExchange::update_catstate() != 0) {
-        return;
-    }
+		return;
+	}
 
 	CND_DAEMON_DEBUG("Startinig whisker exchange");
 	if (WhiskerExchange::run() != 0) {
-        return;
-    }
+		return;
+	}
 }
 
 void
